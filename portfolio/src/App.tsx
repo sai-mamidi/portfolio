@@ -199,9 +199,8 @@ export default function Portfolio() {
   const tagline = "I build modern, responsive, API‑driven web apps.";
   const email = "saikiran.mamidi44@gmail.com";
   const linkedinUrl = "https://www.linkedin.com/in/saikiran-mamidi";
-  const githubUrl = "https://github.com/"; // update if you want to show
-  // const resumeUrl = "/saikiran.m-resume.pdf"; // replace with hosted resume path
-  const resumeUrl = "/src/assets/saikiran.m-resume.pdf"; // replace with hosted resume path
+  const githubUrl = "https://github.com/"; 
+  const resumeUrl = "/saikiran.m-resume.pdf"; 
 
   const skills = {
     Languages: [
