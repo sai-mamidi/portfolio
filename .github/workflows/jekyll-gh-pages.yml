@@ -1,18 +1,25 @@
-name: Deploy Vite React to GitHub Pages
+name: Deploy Vite React app to GitHub Pages
 
 on:
   push:
-    branches: [ "main" ]   # run on pushes to main
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./portfolio   # 👈 your React app folder
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -28,13 +35,13 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Copy index.html to 404.html # fallback for React Router
+      - name: Copy index.html to 404.html
         run: cp dist/index.html dist/404.html
 
       - name: Upload production-ready build files
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./portfolio/dist   # 👈 points to the dist folder inside portfolio
 
   deploy:
     environment:
